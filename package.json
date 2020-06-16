@@ -1,7 +1,7 @@
 {
-  "name": "black-dashboard-angular",
-  "version": "1.1.0",
-  "description": "Black Dasboard Angular, a Creative Tim Desgin. Coded by Creative Tim",
+  "name": "portfolio",
+  "version": "1.0",
+  "description": "Black Dasboard Angular",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/creativetimofficial/black-dashboard-angular.git"
+    "url": "git+https://github.com/szareian/portfolio.git"
   },
   "keywords": [
     "angular dashboard",
@@ -53,12 +53,12 @@
     " free admin dashboard",
     "free bootstrap 4 admin dashboard"
   ],
-  "author": "Creative Tim <hello@creative-tim.com> (https://www.creative-tim.com/)",
+  "author": "Sina Zareian, Creative Tim <hello@creative-tim.com> (https://www.creative-tim.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/creativetimofficial/black-dashboard-angular/issues"
+    "url": "https://github.com/szareian/portfolio/issues"
   },
-  "homepage": "https://demos.creative-tim.com/black-dashboard-angular/#/dashboard",
+  "homepage": "https://szareian.github.io/portfolio/#/dashboard",
   "private": false,
   "dependencies": {
     "@angular/animations": "9.0.5",
