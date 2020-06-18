@@ -6,13 +6,13 @@ import { RouterModule } from "@angular/router";
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from "./app.component";
-import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
+import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";  // imports the pages
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppRoutingModule } from "./app-routing.module";
-import { ComponentsModule } from "./components/components.module";
+import { ComponentsModule } from "./components/components.module"; // imports components
 
 @NgModule({
   imports: [
