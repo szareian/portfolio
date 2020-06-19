@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   public clicked1: boolean = false;
   public clicked2: boolean = false;
 
-  public players: Player = [];
+  public players: Player[];
 
   constructor(private nbaapiservice: NbaApiService ) {}
 
