@@ -13,7 +13,7 @@ export class NbaApiService {
 
     API_KEY = '';
 
-    private all_players_url: string = 'https://www.balldontlie.io/api/v1/players?search=dwight';
+    private all_players_url: string = 'https://www.balldontlie.io/api/v1/players?search=leonard';
     // private all_players_url: string = 'https://www.balldontlie.io/api/v1/players?search=anthony+davis';
 
     public getAllPlayers(): Observable<Player[]>{ 
@@ -21,7 +21,7 @@ export class NbaApiService {
         return this.http.get<Player[]>(this.all_players_url)
             .pipe(map((res: any) => res.data),
                 // catchError(error => { return throwError('Its a Trap!') })
-            );;
+            );
     };
 
     
