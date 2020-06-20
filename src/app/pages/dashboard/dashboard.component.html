@@ -1,6 +1,10 @@
 
 <div class=" content" >
- <div *ngFor= "let player of players" >
-   <ul>{{ player.team.full_name }}</ul>
+  <app-player-search></app-player-search>
+
+  <br>  
+  <h6>List of players - their team:</h6>
+  <div *ngFor= "let player of players" >
+    <li>{{ player.first_name }},{{ player.last_name }} - {{ player.team.full_name }}</li>
  </div>
 </div>

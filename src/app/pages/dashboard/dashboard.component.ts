@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 
-import { NbaApiService } from "../../nba-api.service"
+import { NbaApiService } from "../../nba-api.service";
 
 import { Player } from '../../player';
+import { Game } from '../../game';
 
 @Component({
   selector: "app-dashboard",
@@ -19,6 +20,7 @@ export class DashboardComponent implements OnInit {
   public clicked2: boolean = false;
 
   public players: Player[];
+  public Games: Game[];
 
   constructor(private nbaapiservice: NbaApiService ) {}
 
@@ -27,8 +29,9 @@ export class DashboardComponent implements OnInit {
     this.nbaapiservice.getAllPlayers() 
       .subscribe( 
         (res) => {this.players = res,
-        console.log(Object.keys(res))
+        console.log(res)
         // console.log(this.players.team)
         });
+    
   }
 }
