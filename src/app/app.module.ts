@@ -12,7 +12,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppRoutingModule } from "./app-routing.module";
-import { ComponentsModule } from "./components/components.module"; // imports components
+import { ComponentsModule } from "./components/components.module";
 
 @NgModule({
   imports: [
