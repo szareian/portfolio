@@ -3,9 +3,9 @@ export interface Player {
     "first_name": string,
     "last_name": string,
     "position": string,
-    "height_feet": number,
-    "height_inches": number,
-    "weight_pounds": number,
+    "height_feet": any,
+    "height_inches": any,
+    "weight_pounds": any,
     "team": {
         "id": number,
         "abbreviation": string,
