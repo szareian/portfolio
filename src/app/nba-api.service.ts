@@ -30,10 +30,8 @@ export class NbaApiService {
         const options = term ?
             { params: new HttpParams().set('search', term) } : {};
 
-        return this.http.get<Hero[]>(this.playersUrl, options)
+        return this.http.get<Player[]>(this.playersUrl, options)
             .pipe(map((res: any) => res.data));
-        // return this.http.get<Player[]>('${this.playersUrl}?search=${term}')
-        //     .pipe(map((res: any) => res.data))
     };
 
     
