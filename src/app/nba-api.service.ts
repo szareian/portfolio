@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Player } from './player';
 
@@ -30,6 +30,9 @@ export class NbaApiService {
         const options = term ?
             { params: new HttpParams().set('search', term) } : {};
 
+        if (!term){ // quick fix for when the search box is clear
+            return
+        }
         return this.http.get<Player[]>(this.playersUrl, options)
             .pipe(map((res: any) => res.data));
     };
