@@ -1,10 +1,9 @@
-import { Component, OnInit, APP_ID } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
-import { Player } from '../../player';
 import { NbaApiService } from "../../nba-api.service";
+import { Player } from '../../player';
 
 @Component({
   selector: 'app-player-search',
@@ -14,13 +13,21 @@ import { NbaApiService } from "../../nba-api.service";
 export class PlayerSearchComponent implements OnInit {
 
   public players$: Observable<Player[]>;
+  public headShot: String;
+  public defaultHeadshot = '../../../assets/img/default-avatar.png';
   private searchTerms = new Subject<string>();
+  private headShotBaseUrl = 'https://nba-players.herokuapp.com/players';
 
-  constructor(private nbaapiservice: NbaApiService ) { }
+  constructor(private nbaapiservice: NbaApiService) { }
 
   // Push a search term into the observable stream.
   search(term: string): void {
     this.searchTerms.next(term);
+  }
+
+  postHeadshot(p: Player): string {
+    let results = this.headShotBaseUrl + '/' + p.last_name + '/' + p.first_name;
+    return results
   }
 
   ngOnInit(): void {
@@ -34,6 +41,7 @@ export class PlayerSearchComponent implements OnInit {
     // switch to new search observable each time the term changes
     switchMap((term: string) => this.nbaapiservice.searchPlayers(term)),
     );
+      
   }
   
 }

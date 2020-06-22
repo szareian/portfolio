@@ -1,11 +1,23 @@
+<head>
+    <style>
+        img {
+            width: 300px;
+            height: 254px;
+        }
+    </style>
+</head>
 <div id="search-component">
     <h4><label for="search-box">NBA Player Search</label></h4>
 
-    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+    <input #searchBox (input)="search(searchBox.value)" />
 
     <ul class="search-result">
         <li *ngFor="let player of players$ | async">
         {{ player.first_name }},{{ player.last_name }} - {{ player.team.full_name }}
+        
+            <br>
+            <img src="{{ postHeadshot(player) }}" onerror="this.src='../../../assets/img/default-avatar.png';" />         
         </li>
     </ul>
+    
 </div>
