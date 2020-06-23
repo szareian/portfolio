@@ -8,6 +8,7 @@
         
     </style>
 </head>
+<ng-template #NotApplicable><td class="text-center"></td></ng-template>
 
 <div id="search-component">
     <h4><label for="search-box">NBA Player Search</label></h4>
@@ -36,8 +37,8 @@
                                     <tr>
                                         <td class="text-center" >{{ player.first_name }}</td>
                                         <td class="text-center" >{{ player.last_name }}</td>
-                                        <th class="text-center">{{ player.height_feet + "'" + player.height_inches + "\"" }}</th>
-                                        <th class="text-center">{{ player.weight_pounds + " lb" }}</th>
+                                        <th class="text-center" *ngIf="player.height_feet; else NotApplicable">{{ player.height_feet + "'" + player.height_inches + "\"" }}</th>
+                                        <th class="text-center" *ngIf="player.weight_pounds; else NotApplicable">{{ player.weight_pounds + " lb" }}</th>
                                         <td class="text-center" >{{ player.position }}</td>
                                         <td class="text-center" >{{ player.team.full_name }}</td>
                                     </tr>
