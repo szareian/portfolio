@@ -29,6 +29,7 @@ export class PlayerSearchComponent implements OnInit {
     let results = this.headShotBaseUrl + '/' + p.last_name + '/' + p.first_name;
     return results
   }
+  
 
   ngOnInit(): void {
     this.players$ = this.searchTerms.pipe(
