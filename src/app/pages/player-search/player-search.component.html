@@ -11,46 +11,44 @@
 
 <div id="search-component">
     <h4><label for="search-box">NBA Player Search</label></h4>
-
-    <input class=" col-sml-1" #searchBox (input)="search(searchBox.value)" />
-                <div class=" row">
-                    <div class=" col-md-12">
-                        <div class=" card">
-                            <div class=" card-header">
-                                <h4 class=" card-title">Player Profile</h4>
-                            </div>
-                            <div class=" card-body">
-                                <div class=" table-responsive">
-                                    <table class=" table tablesorter" id="">
-                                        <ul class="search-result">
-                                            <thead class=" text-primary">
-                                                <tr>
-                                                    <th class="text-center">First Name</th>
-                                                    <th class="text-center">Last Name</th>
-                                                    <th class="text-center">Height</th>
-                                                    <th class="text-center">Weight</th>
-                                                    <th class="text-center">Position</th>
-                                                    <th class="text-center">Team</th>
-                                                </tr>
-                                            </thead>
-                                    
-                                            <tbody *ngFor="let player of players$ | async">
-                                                <tr>
-                                                    <td class="text-center" >{{ player.first_name }}</td>
-                                                    <td class="text-center" >{{ player.last_name }}</td>
-                                                    <th class="text-center">{{ player.height_feet + "'" + player.height_inches + "\"" }}</th>
-                                                    <th class="text-center">{{ player.weight_pounds + " lb" }}</th>
-                                                    <td class="text-center" >{{ player.position }}</td>
-                                                    <td class="text-center" >{{ player.team.full_name }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </ul>
-                                    </table>   
-                                </div>
-                            </div>
-                        </div>
+    <input class="mysearchbar" #searchBox (input)="search(searchBox.value)" />
+    <div class=" row">
+        <div class=" col-md-12">
+            <div class=" card">
+                <div class=" card-header">
+                    <h4 class=" card-title">Player Profile</h4>
+                </div>
+                <div class=" card-body">
+                    <div class=" table-responsive">
+                        <table class=" table tablesorter" id="">
+                            <ul class="search-result">
+                                <thead class=" text-primary">
+                                    <tr>
+                                        <th class="text-center">First Name</th>
+                                        <th class="text-center">Last Name</th>
+                                        <th class="text-center">Height</th>
+                                        <th class="text-center">Weight</th>
+                                        <th class="text-center">Position</th>
+                                        <th class="text-center">Team</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let player of players$ | async">
+                                    <tr>
+                                        <td class="text-center" >{{ player.first_name }}</td>
+                                        <td class="text-center" >{{ player.last_name }}</td>
+                                        <th class="text-center">{{ player.height_feet + "'" + player.height_inches + "\"" }}</th>
+                                        <th class="text-center">{{ player.weight_pounds + " lb" }}</th>
+                                        <td class="text-center" >{{ player.position }}</td>
+                                        <td class="text-center" >{{ player.team.full_name }}</td>
+                                    </tr>
+                                </tbody>
+                            </ul>
+                        </table>   
                     </div>
                 </div>
-
-            <!-- <img src="{{ postHeadshot(player) }}" onerror="this.src='../../../assets/img/default-avatar.png';" />          -->
+            </div>
+        </div>
+    </div>
+                                        
 </div>
+            <!-- <img src="{{ postHeadshot(player) }}" onerror="this.src='../../../assets/img/default-avatar.png';" />          -->
