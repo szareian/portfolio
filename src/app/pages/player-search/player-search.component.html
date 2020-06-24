@@ -4,10 +4,10 @@
             width: 300px;
             height: 254px;
         }
-
-        
     </style>
 </head>
+
+<!-- Template for missing information e.g. player's height/weight -->
 <ng-template #NotApplicable><td class="text-center"></td></ng-template>
 
 <div id="search-component">
@@ -20,7 +20,7 @@
                     <h4 class=" card-title">Player Profile</h4>
                 </div>
                 <div class=" card-body">
-                    <div class=" table-responsive">
+                    <div>
                         <table class=" table tablesorter" id="">
                             <ul class="search-result">
                                 <thead class=" text-primary">
@@ -31,16 +31,18 @@
                                         <th class="text-center">Weight</th>
                                         <th class="text-center">Position</th>
                                         <th class="text-center">Team</th>
+                                        <th class="text-center">Headshot</th>
                                     </tr>
                                 </thead>
                                 <tbody *ngFor="let player of players$ | async">
                                     <tr>
-                                        <td class="text-center" >{{ player.first_name }}</td>
-                                        <td class="text-center" >{{ player.last_name }}</td>
-                                        <th class="text-center" *ngIf="player.height_feet; else NotApplicable">{{ player.height_feet + "'" + player.height_inches + "\"" }}</th>
-                                        <th class="text-center" *ngIf="player.weight_pounds; else NotApplicable">{{ player.weight_pounds + " lb" }}</th>
-                                        <td class="text-center" >{{ player.position }}</td>
-                                        <td class="text-center" >{{ player.team.full_name }}</td>
+                                        <td class="text-center" ><p>{{ player.first_name }}</p></td>
+                                        <td class="text-center" ><p>{{ player.last_name }}</p></td>
+                                        <th class="text-center" *ngIf="player.height_feet; else NotApplicable"><p>{{ player.height_feet + "'" + player.height_inches + "\"" }}</p></th>
+                                        <th class="text-center" *ngIf="player.weight_pounds; else NotApplicable"><p>{{ player.weight_pounds + " lb" }}</p></th>
+                                        <td class="text-center" ><p>{{ player.position }}</p></td>
+                                        <td class="text-center" ><p>{{ player.team.full_name }}</p></td>
+                                        <th class="text-center"><img src="{{ postHeadshot(player) }}" onerror="this.src='../../../assets/img/default-avatar.png';" /></th>
                                     </tr>
                                 </tbody>
                             </ul>
