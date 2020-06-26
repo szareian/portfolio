@@ -44,3 +44,11 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Backend
+# API Keys for Twitter 
+config.js
+
+# dependecies
+node_modules/
+
