@@ -1,4 +1,14 @@
-
+<!DOCTYPE html>
+<head>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@angportfolio">
+  <meta name="twitter:creator" content="@SarahMaslinNir">
+  <meta name="twitter:title" content="Parade of Fans for Houston’s Funeral">
+  <meta name="twitter:description"
+    content="NEWARK - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here.">
+  <meta name="twitter:image"
+    content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg">
+</head>
 <div class=" content">
   <div class=" row">
     <div class=" col-md-12">
@@ -8,12 +18,14 @@
         <div *ngIf="undefined !== myTimeline">
           <div class="card">
             <ng-container *ngFor="let tweets of myTimeline.data">
-              <h3>{{tweets.full_text}}</h3>
-              <p>{{tweets.created_at}}</p>
-              <p>{{tweets.user.name}}</p>
-              <p>{{tweets.user.screen_name}}</p>
-              <p>{{tweets.user.location}}</p>
-              <p>{{tweets.user.description}}</p>
+              <blockquote class="twitter-tweet">
+                <p>{{tweets.user.name}}</p>
+                <p *ngIf="tweets.user.name != tweets.user.screen_name">{{tweets.user.screen_name}}</p>
+                <a>{{tweets.full_text}}</a>
+                <p>{{tweets.created_at}}</p>
+                <p>{{tweets.user.location}}</p>
+                <!-- <p>{{tweets.user.description}}</p> -->
+              </blockquote>
             </ng-container>
           </div>
         </div>
@@ -21,3 +33,5 @@
     </div>
   </div>
 </div>
+
+

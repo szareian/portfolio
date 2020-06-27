@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { TwitterApiService } from '../../twitter-api.service'
+import { TwitterApiService } from '../../twitter-api.service';
 
 @Component({
   selector: "app-news",
-  templateUrl: "news.component.html"
+  templateUrl: "news.component.html",
+  styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
   myTimeline: any;
