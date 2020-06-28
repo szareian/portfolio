@@ -17,17 +17,17 @@
                 </div>
                 <div class=" card-body">
                     <div>
-                        <table class=" table tablesorter" id="">
+                        <table class=" table table-hover" id="">
                             <ul class="search-result">
                                 <thead class=" text-primary">
                                     <tr>
-                                        <th class="text-center">First Name</th>
-                                        <th class="text-center">Last Name</th>
-                                        <th class="text-center">Height</th>
-                                        <th class="text-center">Weight</th>
-                                        <th class="text-center">Position</th>
-                                        <th class="text-center">Team</th>
-                                        <th class="text-center">Headshot</th>
+                                        <th scope="col" class="text-center">First Name</th>
+                                        <th scope="col" class="text-center">Last Name</th>
+                                        <th scope="col" class="text-center">Height</th>
+                                        <th scope="col" class="text-center">Weight</th>
+                                        <th scope="col" class="text-center">Position</th>
+                                        <th scope="col" class="text-center">Team</th>
+                                        <th scope="col" class="text-center">Headshot</th>
                                     </tr>
                                 </thead>
                                 <tbody *ngFor="let player of players$ | async">
@@ -50,3 +50,4 @@
     </div>
                                         
 </div>
+

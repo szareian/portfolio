@@ -7,3 +7,7 @@ img {
   width: 300px;
   height: 254px;
 }
+
+.table-hover tbody tr:hover {
+  background-color: rgb(52, 59, 83);
+}
