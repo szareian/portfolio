@@ -38,7 +38,7 @@
                                         <th class="text-center" *ngIf="player.weight_pounds; else NotApplicable"><p>{{ player.weight_pounds + " lb" }}</p></th>
                                         <td class="text-center" ><p>{{ player.position }}</p></td>
                                         <td class="text-center" ><p>{{ player.team.full_name }}</p></td>
-                                        <th class="text-center"><img src="{{ postHeadshot(player) }}" onerror="this.src='../../../assets/img/default-avatar.png';" /></th>
+                                        <th class="text-center"><img src="{{ postHeadshot(player) }}" onerror="this.src='./assets/img/default-avatar.png';" /></th>
                                     </tr>
                                 </tbody>
                             </ul>
