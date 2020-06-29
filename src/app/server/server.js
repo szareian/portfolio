@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
  
-app.listen(process.env.PORT || 3000, () => console.log('Server running'))
+app.listen(process.env.PORT, () => console.log('Server running'))
 
 // Allowing X-domain request
 var allowCrossDomain = function (req, res, next) {
