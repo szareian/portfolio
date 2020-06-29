@@ -1,4 +1,4 @@
-const key = require('./config.js');
+// const key = require('./config.js');
 const express = require('express');
 const Twitter = require('twit');
 
