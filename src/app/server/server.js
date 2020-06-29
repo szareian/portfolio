@@ -1,7 +1,14 @@
 const key = require('./config.js');
 const express = require('express');
 const Twitter = require('twit');
-const app = express();
+
+var app = express();
+var bodyParser = require("body-parser");
+app.use(bodyParser.json());
+
+// Create link to Angular build directory
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
  
 app.listen(3000, () => console.log('Server running'))
 
