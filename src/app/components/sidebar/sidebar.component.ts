@@ -13,12 +13,12 @@ export const ROUTES: RouteInfo[] = [
     icon: "fa-list-ul",
     class: "fa"
   },
-  {
-    path: "/news",
-    title: "News",
-    icon: "fa-newspaper",
-    class: "fa"
-  },
+  // {
+  //   path: "/news",
+  //   title: "News",
+  //   icon: "fa-newspaper",
+  //   class: "fa"
+  // },
   // {
   //   path: "/maps",
   //   title: "Maps",
