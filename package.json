@@ -4,7 +4,7 @@
   "description": "Black Dasboard Angular",
   "scripts": {
     "ng": "ng",
-    "start": "node server/server.js",
+    "start": "node src/app/server/server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
