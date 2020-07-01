@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Player } from './player';
+import { SeasonAvg } from './season-average';
 
 @Injectable( {
     providedIn: 'root'
@@ -14,6 +15,7 @@ export class NbaApiService {
     API_KEY = '';
 
     private playersUrl: string = 'https://www.balldontlie.io/api/v1/players';
+    private seasonAvgURL: string = 'https://www.balldontlie.io/api/v1/season_averages';
 
     public getAllPlayers(): Observable<Player[]>{ 
         return this.http.get<Player[]>(this.playersUrl)
@@ -35,6 +37,19 @@ export class NbaApiService {
 
         return this.http.get<Player[]>(this.playersUrl, options)
             .pipe(map((res: any) => res.data));
+    };
+
+    
+    public getSeasonAverage(player_id: number, season: number): Observable<SeasonAvg[]>{
+        const paramsObj = {
+            'season': season || '',
+            "player_ids\[\]": player_id || '',
+        }
+        const params = new HttpParams({ fromObject: paramsObj } as HttpParamsOptions);
+
+        return this.http.get<Player[]>(this.seasonAvgURL, { params })
+            .pipe(map((res: any) => res.data),
+            );
     };
 
     
