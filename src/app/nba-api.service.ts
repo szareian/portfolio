@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpParamsOptions } from "../HttpParamsOptions";
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Player } from './player';
