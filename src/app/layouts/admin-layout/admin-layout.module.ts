@@ -7,6 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { PlayerSearchComponent } from '../../pages/player-search/player-search.component'; 
+import { PlayerSeasonAvgComponent } from '../../pages/player-season-avg/player-season-avg.component';
 
 import { MapComponent } from "../../pages/map/map.component";
 import { NotificationsComponent } from "../../pages/notifications/notifications.component";
@@ -32,6 +33,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     NotificationsComponent,
     MapComponent,
     PlayerSearchComponent,
+    PlayerSeasonAvgComponent
   ]
 })
 export class AdminLayoutModule {}

@@ -28,6 +28,7 @@
                                         <th scope="col" class="text-center">Position</th>
                                         <th scope="col" class="text-center">Team</th>
                                         <th scope="col" class="text-center">Headshot</th>
+                                        <th scope="col" class="text-center">Season Avg</th>
                                     </tr>
                                 </thead>
                                 <tbody *ngFor="let player of players$ | async">
@@ -39,6 +40,7 @@
                                         <td class="text-center" ><p>{{ player.position }}</p></td>
                                         <td class="text-center" ><p>{{ player.team.full_name }}</p></td>
                                         <th class="text-center"><img src="{{ postHeadshot(player) }}" onerror="this.src='./assets/img/default-avatar.png';" /></th>
+                                        <td class="text-center" ><p> <app-player-season-avg [currPlayer]="player"></app-player-season-avg> </p></td>
                                     </tr>
                                 </tbody>
                             </ul>
