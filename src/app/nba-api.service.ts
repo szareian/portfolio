@@ -41,7 +41,7 @@ export class NbaApiService {
     };
 
     
-    public getSeasonAverage(player_id: number, season: number): Observable<SeasonAvg[]>{
+    public getSeasonAverage(player_id: number, season?: number): Observable<SeasonAvg[]>{
         const paramsObj = {
             'season': season || '',
             "player_ids\[\]": player_id || '',
