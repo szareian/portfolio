@@ -16,7 +16,7 @@ export class NbaApiService {
     API_KEY = '';
 
     private playersUrl: string = 'https://www.balldontlie.io/api/v1/players';
-    private seasonAvgURL: string = 'https://www.balldontlie.io/api/v1/season_averages';
+    private seasonAvgUrl: string = 'https://www.balldontlie.io/api/v1/season_averages';
 
     public getAllPlayers(): Observable<Player[]>{ 
         return this.http.get<Player[]>(this.playersUrl)
@@ -48,7 +48,7 @@ export class NbaApiService {
         }
         const params = new HttpParams({ fromObject: paramsObj } as HttpParamsOptions);
 
-        return this.http.get<Player[]>(this.seasonAvgURL, { params })
+        return this.http.get<Player[]>(this.seasonAvgUrl, { params })
             .pipe(map((res: any) => res.data),
             );
     };
