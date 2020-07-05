@@ -1,2 +1,45 @@
-<!-- <p>{{ postSeasonAvg(237,2018) }}</p> -->
-<!-- <p>{{ currPlayer.team.city }}</p> -->
+<!DOCTYPE html>
+<!-- Template for missing information e.g. player's height/weight -->
+<ng-template #NotApplicable>
+    <td class="text-center"></td>
+</ng-template>
+
+<div class=" content">
+    <div class=" row">
+        <div class=" col-md-12 active-cyan active-cyan-2 mb-3">
+            <div class=" card">
+                <div class=" card-header">
+                    <h4 class="card-title">{{ currPlayer.first_name + ' ' + currPlayer.last_name }} Stats</h4>
+                </div>
+                <div class=" card-body">
+                    <div>
+                        <table class=" table table-hover" id="">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th class="text-center">First Name</th>
+                                    <th class="text-center">Last Name</th>
+                                    <th class="text-center">Height</th>
+                                    <th class="text-center">Weight</th>
+                                    <th class="text-center">Position</th>
+                                    <th class="text-center">Team</th>
+                                    <!-- <th class="text-center">Season Avg</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center"><p>{{ currPlayer.first_name }}</p></td>
+                                    <td class="text-center"><p>{{ currPlayer.last_name }}</p></td>
+                                    <th class="text-center" *ngIf="currPlayer.height_feet; else NotApplicable"><p>{{ currPlayer.height_feet + "'" + currPlayer.height_inches + "\"" }}</p></th>
+                                    <th class="text-center" *ngIf="currPlayer.weight_pounds; else NotApplicable"><p>{{ currPlayer.weight_pounds + " lb" }}</p></th>
+                                    <td class="text-center"><p>{{ currPlayer.position }}</p></td>
+                                    <td class="text-center"><p>{{ currPlayer.team.full_name }}</p></td>
+                                    <!-- <td class="text-center"><p>{{ playerAvg.min }}</p></td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
