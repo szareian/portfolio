@@ -1,55 +1,48 @@
 <!DOCTYPE html>
-<!-- Template for missing information e.g. player's height/weight -->
-<ng-template #NotApplicable><td class="text-center"></td></ng-template>
 
 <div id="search-component">
-    <h4><label  class=" card-title" for="search-box">NBA Player Search</label></h4>
+    <h4><label class=" card-title" for="search-box">NBA Player Search</label></h4>
     <div class="form-inline active-cyan active-cyan-2 mb-3">
         <i class="fas fa-search " aria-hidden="true"></i>
-        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search players by name..." aria-label="Search" #searchBox (input)="search(searchBox.value)">
+        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search players by name..."
+            aria-label="Search" #searchBox (input)="search(searchBox.value)">
     </div>
 
-    <div class=" row">
-        <div class=" col-md-12">
-            <div class=" card">
-                <div class=" card-header">
-                    <h4 class="card-title">Player Profile</h4>
-                </div>
-                <div class=" card-body">
-                    <div>
-                        <table class=" table table-hover" id="">
-                            <ul class="search-result">
-                                <thead class=" text-primary">
-                                    <tr>
-                                        <th scope="col" class="text-center">First Name</th>
-                                        <th scope="col" class="text-center">Last Name</th>
-                                        <th scope="col" class="text-center">Height</th>
-                                        <th scope="col" class="text-center">Weight</th>
-                                        <th scope="col" class="text-center">Position</th>
-                                        <th scope="col" class="text-center">Team</th>
-                                        <th scope="col" class="text-center">Headshot</th>
-                                        <th scope="col" class="text-center">Season Avg</th>
-                                    </tr>
-                                </thead>
-                                <tbody *ngFor="let player of players$ | async">
-                                    <tr>
-                                        <td class="text-center" ><p>{{ player.first_name }}</p></td>
-                                        <td class="text-center" ><p>{{ player.last_name }}</p></td>
-                                        <th class="text-center" *ngIf="player.height_feet; else NotApplicable"><p>{{ player.height_feet + "'" + player.height_inches + "\"" }}</p></th>
-                                        <th class="text-center" *ngIf="player.weight_pounds; else NotApplicable"><p>{{ player.weight_pounds + " lb" }}</p></th>
-                                        <td class="text-center" ><p>{{ player.position }}</p></td>
-                                        <td class="text-center" ><p>{{ player.team.full_name }}</p></td>
-                                        <th class="text-center"><img src="{{ postHeadshot(player) }}" onerror="this.src='./assets/img/default-avatar.png';" /></th>
-                                        <td class="text-center" ><p> <app-player-season-avg [currPlayer]="player"></app-player-season-avg> </p></td>
-                                    </tr>
-                                </tbody>
-                            </ul>
-                        </table>   
+
+
+    <ng-container *ngFor="let player of players$ | async">
+        <div class="wrapper blur">
+            <ul class="staff">
+                <li>
+                    <!-- <a class="figure-caption text-center mt-3"> -->
+                        <div class="picture-wrapper" (click)='infoCard(player)'>
+                            <div class="picture">
+                                <img src="{{ postHeadshot(player) }}" onerror="this.src='./assets/img/default-avatar.png';">
+                            </div>
+                        </div>
+                        <div class="name" >{{ player.first_name + ' ' + player.last_name}}</div>
+                        <div class="title">{{ player.position }}</div>
+                    <!-- </a> -->
+                </li>
+            </ul>
+        </div>
+
+        <div class="card" aria-hidden="true">
+            <div class="card__exit"></div>
+            <div class="card__content">
+                <div class="profile">
+                    <div class="profile__picture">
+                        <img src="{{ postHeadshot(player) }}" onerror="this.src='./assets/img/default-avatar.png';">
+                    </div>
+                    <div class="info">
+                        <div class="info__name">{{ player.first_name + ' ' + player.last_name}}</div>
+                        <div class="info__title">{{ player.position }}</div>
                     </div>
                 </div>
+                <app-player-season-avg [currPlayer]="player"></app-player-season-avg>
+                <i class="exit material-icons">close</i>
             </div>
         </div>
-    </div>
-                                        
-</div>
+    </ng-container>
 
+</div>

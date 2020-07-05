@@ -30,19 +30,65 @@ export class PlayerSearchComponent implements OnInit {
     return results
   }
   
+  // Extra Information about the player e.g. height,weight,stats,..
+  infoCard(staff: any) {
+    'use strict';
 
+    // console.clear();
+
+    // DOM elements
+    var body = document.body;
+    staff = document.querySelector('.staff li');
+    var blur = document.querySelector('.blur');
+    var card = document.querySelector('.card');
+    var cardContent = document.querySelector('.card__content');
+    var exitBtn = document.querySelector('.exit');
+    var cardExit = document.querySelector('.card__exit');
+    
+    
+    if(staff){
+      staff.addEventListener('click', function () {
+        toggleCard(true);
+        // add no hover class to prevent hover styles from remaining on screen
+        this.classList.add('no-hover');        
+      });
+    };
+    
+    
+    // card exit icon
+    exitBtn.addEventListener('click', function () { toggleCard(false) });
+    
+    // if user clicks outside of the card, close it  
+    cardExit.addEventListener('click', function () { toggleCard(false) });
+    
+    
+    function toggleCard(toggle) {
+      card.setAttribute('aria-hidden', (!toggle).toString());
+      blur.classList.toggle('blur--active', toggle);
+      body.classList.toggle('no-scroll', toggle);
+      
+      // scroll card content back to the top
+      cardContent.scrollTop = 0;
+      
+      // remove no hover class
+      if (!toggle) {
+        document.querySelector('.no-hover').classList.remove('no-hover');
+      }
+    }
+  }
+  
+  
   ngOnInit(): void {
     this.players$ = this.searchTerms.pipe(
-    // wait 300ms after each keystroke before considering the term
-    debounceTime(300),
+      // wait 300ms after each keystroke before considering the term
+      debounceTime(300),
 
     // ignore new term if same as previous term
     distinctUntilChanged(),
 
     // switch to new search observable each time the term changes
     switchMap((term: string) => this.nbaapiservice.searchPlayers(term)),
-    );
-      
+    );      
   }
   
 }
