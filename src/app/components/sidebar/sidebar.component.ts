@@ -19,11 +19,11 @@ export const ROUTES: RouteInfo[] = [
   //   icon: "fa-newspaper",
   //   class: "fa"
   // },
-  // {
-  //   path: "/maps",
-  //   title: "Maps",
-  //   icon: "icon-pin",
-  //   class: "" },
+  {
+    path: "/maps",
+    title: "Maps",
+    icon: "fa-map-marker",
+    class: "fa" },
   // {
   //   path: "/notifications",
   //   title: "Notifications",
