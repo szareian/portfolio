@@ -93,9 +93,9 @@ $width: 1010px;
 
 
 .card {
-  display: none;
+//   display: none;
   position: fixed;
-  top: 0; right: 0; bottom: 0; left: 0;
+  top: 25%; right: 25%; bottom: 25%; left: 25%;
   
   &__exit {
       position: absolute;
@@ -123,6 +123,7 @@ $width: 1010px;
       cursor: pointer;
       opacity: .5;
       transition: opacity 250ms;
+      color: red;
 
       &:hover {
         opacity: 1;

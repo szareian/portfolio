@@ -13,21 +13,20 @@
     <ng-container *ngFor="let player of players$ | async">
         <div class="wrapper blur">
             <ul class="staff">
-                <li>
-                    <!-- <a class="figure-caption text-center mt-3"> -->
-                        <div class="picture-wrapper" (click)='infoCard(player)'>
-                            <div class="picture">
-                                <img src="{{ postHeadshot(player) }}" onerror="this.src='./assets/img/default-avatar.png';">
-                            </div>
+                <!-- <li (click)='infoCard(player)'> -->
+                <li (click)='toggle()'>
+                    <div class="picture-wrapper">
+                        <div class="picture">
+                            <img src="{{ postHeadshot(player) }}" onerror="this.src='./assets/img/default-avatar.png';">
                         </div>
-                        <div class="name" >{{ player.first_name + ' ' + player.last_name}}</div>
-                        <div class="title">{{ player.position }}</div>
-                    <!-- </a> -->
+                    </div>
+                    <div class="name" >{{ player.first_name + ' ' + player.last_name}}</div>
+                    <div class="title">{{ player.position }}</div>
                 </li>
             </ul>
         </div>
 
-        <div class="card" aria-hidden="true">
+        <div @myInsertRemoveTrigger *ngIf="isShown" class="card">
             <div class="card__exit"></div>
             <div class="card__content">
                 <div class="profile">
@@ -40,9 +39,10 @@
                     </div>
                 </div>
                 <app-player-season-avg [currPlayer]="player"></app-player-season-avg>
-                <i class="exit material-icons">close</i>
+                <i class="exit material-icons" (click)="toggle()" >close</i>
             </div>
         </div>
+
     </ng-container>
 
 </div>
