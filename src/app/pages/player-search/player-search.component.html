@@ -10,10 +10,9 @@
 
 
 
-    <ng-container *ngFor="let player of players$ | async">
+    <ng-container *ngFor="let player of players$ | async; trackBy: trackByMethod">
         <div class="wrapper blur">
             <ul class="staff">
-                <!-- <li (click)='infoCard(player)'> -->
                 <li (click)='toggle()'>
                     <div class="picture-wrapper">
                         <div class="picture">
@@ -26,8 +25,7 @@
             </ul>
         </div>
 
-        <div @myInsertRemoveTrigger *ngIf="isShown" class="card">
-            <div class="card__exit"></div>
+        <div @insertRemoveStats [hidden]="isHidden" class="card" >
             <div class="card__content">
                 <div class="profile">
                     <div class="profile__picture">
@@ -38,8 +36,12 @@
                         <div class="info__title">{{ player.position }}</div>
                     </div>
                 </div>
+                
                 <app-player-season-avg [currPlayer]="player"></app-player-season-avg>
-                <i class="exit material-icons" (click)="toggle()" >close</i>
+
+                <button type="button" class="close" aria-label="Close" (click)='toggle()'>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         </div>
 

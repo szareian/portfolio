@@ -11,7 +11,7 @@ import { Player } from '../../player';
   templateUrl: './player-search.component.html',
   styleUrls: ['./player-search.component.scss'],
   animations: [
-    trigger('myInsertRemoveTrigger', [
+    trigger('insertRemoveStats', [
       transition(':enter', [
         style({ opacity: 0 }),
         animate('100ms', style({ opacity: 1 })),
@@ -24,6 +24,7 @@ import { Player } from '../../player';
 })
 export class PlayerSearchComponent implements OnInit {
 
+  public isHidden = true;
   public players$: Observable<Player[]>;
   public headShot: String;
   public defaultHeadshot = '../../../assets/img/default-avatar.png';
@@ -42,61 +43,16 @@ export class PlayerSearchComponent implements OnInit {
     return results
   }
   
-  public isShown = false;
-
-  toggle() {
-    this.isShown = !this.isShown;
+  trackByMethod(index: number, p: Player): number {
+    return p.id;
   }
 
-  // Extra Information about the player e.g. height,weight,stats,..
-  // infoCard(staff: any) {
-  //   'use strict';
+  toggle() {
+    this.isHidden = !this.isHidden;
 
-  //   console.clear();
+  }
 
-  //   // DOM elements
-  //   var body = document.body;
-  //   staff = document.querySelector('.staff li');
-  //   // var blur = document.querySelector('.blur');
-  //   var card = document.querySelector('.card');
-  //   var cardContent = document.querySelector('.card__content');
-  //   var exitBtn = document.querySelector('.exit');
-  //   var cardExit = document.querySelector('.card__exit');
     
-  //   console.log(staff);
-    
-  //   if(staff){
-  //     staff.addEventListener('click', function () {
-  //       toggleCard(true);
-  //       // add no hover class to prevent hover styles from remaining on screen
-  //       this.classList.add('no-hover');        
-  //     });
-  //   };
-    
-    
-  //   // card exit icon
-  //   exitBtn.addEventListener('click', function () { toggleCard(false) });
-    
-  //   // if user clicks outside of the card, close it  
-  //   cardExit.addEventListener('click', function () { toggleCard(false) });
-    
-    
-  //   function toggleCard(toggle) {
-  //     card.setAttribute('aria-hidden', (!toggle).toString());
-  //     // blur.classList.toggle('blur--active', toggle);
-  //     body.classList.toggle('no-scroll', toggle);
-      
-  //     // scroll card content back to the top
-  //     cardContent.scrollTop = 0;
-      
-  //     // remove no hover class
-  //     if (!toggle) {
-  //       document.querySelector('.no-hover').classList.remove('no-hover');
-  //     }
-  //   }
-  // }
-  
-  
   ngOnInit(): void {
     this.players$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
