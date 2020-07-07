@@ -95,7 +95,7 @@ $width: 1010px;
 .card {
 //   display: none;
   position: fixed;
-  top: 25%; right: 25%; bottom: 25%; left: 25%;
+  top: 25%; right: 25%; bottom: 100%; left: 25%;
   
   &__exit {
       position: absolute;
