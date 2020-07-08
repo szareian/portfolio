@@ -8,43 +8,39 @@
             aria-label="Search" #searchBox (input)="search(searchBox.value)">
     </div>
 
-
-
     <ng-container *ngFor="let player of players$ | async; trackBy: trackByMethod">
         <div class="wrapper blur">
-            <ul class="staff">
-                <li (click)='toggle()'>
+            <ul class="nba-player">
+                <li (click)='onClick(player)'>
                     <div class="picture-wrapper">
                         <div class="picture">
                             <img src="{{ postHeadshot(player) }}" onerror="this.src='./assets/img/default-avatar.png';">
                         </div>
                     </div>
-                    <div class="name" >{{ player.first_name + ' ' + player.last_name}}</div>
+                    <div class="name">{{ player.first_name + ' ' + player.last_name}}</div>
                     <div class="title">{{ player.position }}</div>
                 </li>
             </ul>
         </div>
-
-        <div @insertRemoveStats [hidden]="isHidden" class="card" >
-            <div class="card__content">
-                <div class="profile">
-                    <div class="profile__picture">
-                        <img src="{{ postHeadshot(player) }}" onerror="this.src='./assets/img/default-avatar.png';">
-                    </div>
-                    <div class="info">
-                        <div class="info__name">{{ player.first_name + ' ' + player.last_name}}</div>
-                        <div class="info__title">{{ player.position }}</div>
-                    </div>
-                </div>
-                
-                <app-player-season-avg [currPlayer]="player"></app-player-season-avg>
-
-                <button type="button" class="close" aria-label="Close" (click)='toggle()'>
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
-
     </ng-container>
+
+    <div @insertRemoveStats [hidden]="isHidden" class="card" *ngIf="CurrPlayer">
+        <div class="card__content">
+            <div class="profile">
+                <div class="profile__picture">
+                    <img src="{{ postHeadshot(CurrPlayer) }}" onerror="this.src='./assets/img/default-avatar.png';">
+                </div>
+                <div class="info">
+                    <div class="info__name">{{ CurrPlayer.first_name + ' ' + CurrPlayer.last_name}}</div>
+                    <div class="info__title">{{ CurrPlayer.position }}</div>
+                </div>
+            </div>
+
+            <app-player-season-avg [currPlayer]="CurrPlayer"></app-player-season-avg>
+            <button type="button" class="close" aria-label="Close" (click)='toggle()'>
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
 
 </div>

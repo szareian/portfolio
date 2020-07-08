@@ -26,10 +26,12 @@ export class PlayerSearchComponent implements OnInit {
 
   public isHidden = true;
   public players$: Observable<Player[]>;
+  public CurrPlayer: Player;
   public headShot: String;
   public defaultHeadshot = '../../../assets/img/default-avatar.png';
   private searchTerms = new Subject<string>();
   private headShotBaseUrl = 'https://nba-players.herokuapp.com/players';
+
 
   constructor(private nbaapiservice: NbaApiService) { }
 
@@ -47,6 +49,14 @@ export class PlayerSearchComponent implements OnInit {
     return p.id;
   }
 
+
+  onClick(p: Player){
+    this.CurrPlayer = p;
+
+    this.toggle();
+  }
+
+
   toggle() {
     this.isHidden = !this.isHidden;
 
@@ -58,11 +68,11 @@ export class PlayerSearchComponent implements OnInit {
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),
 
-    // ignore new term if same as previous term
-    distinctUntilChanged(),
+      // ignore new term if same as previous term
+      distinctUntilChanged(),
 
-    // switch to new search observable each time the term changes
-    switchMap((term: string) => this.nbaapiservice.searchPlayers(term)),
+      // switch to new search observable each time the term changes
+      switchMap((term: string) => this.nbaapiservice.searchPlayers(term)),
     );      
   }
   
