@@ -8,21 +8,19 @@
             aria-label="Search" #searchBox (input)="search(searchBox.value)">
     </div>
 
-    <ng-container *ngFor="let player of players$ | async; trackBy: trackByMethod">
-        <div class="wrapper blur">
-            <ul class="nba-player">
-                <li (click)='onClick(player)'>
-                    <div class="picture-wrapper">
-                        <div class="picture">
-                            <img src="{{ postHeadshot(player) }}" onerror="this.src='./assets/img/default-avatar.png';">
-                        </div>
+    <table class="nba-player">
+        <ng-container *ngFor="let player of players$ | async; let i = index; trackBy: trackByMethod">
+            <td (click)='onClick(player)'>
+                <div class="picture-wrapper">
+                    <div class="picture">
+                        <img src="{{ postHeadshot(player) }}" onerror="this.src='./assets/img/default-avatar.png';">
                     </div>
-                    <div class="name">{{ player.first_name + ' ' + player.last_name}}</div>
-                    <div class="title">{{ player.position }}</div>
-                </li>
-            </ul>
-        </div>
-    </ng-container>
+                </div>
+                <div class="name">{{ player.first_name + ' ' + player.last_name}}</div>
+                <div class="title">{{ player.position }}</div>
+            </td>
+        </ng-container>
+    </table>
 
     <div @insertRemoveStats [hidden]="isHidden" class="card" *ngIf="CurrPlayer">
         <div class="card__content">
