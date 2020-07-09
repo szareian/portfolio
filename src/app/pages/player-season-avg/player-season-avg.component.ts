@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { NbaApiService } from "../../nba-api.service";
 import { SeasonAvg } from '../../season-average';
 import { Player } from '../../player';
@@ -8,7 +8,7 @@ import { Player } from '../../player';
   templateUrl: './player-season-avg.component.html',
   styleUrls: ['./player-season-avg.component.scss']
 })
-export class PlayerSeasonAvgComponent implements OnInit {
+export class PlayerSeasonAvgComponent implements OnChanges {
   public playerAvg: SeasonAvg[];
   @Input() currPlayer: Player; 
 
@@ -20,14 +20,12 @@ export class PlayerSeasonAvgComponent implements OnInit {
       .subscribe(
         (res) => {
         this.playerAvg = res
-          console.log(this.playerAvg)
+        // console.log(this.playerAvg)
         });
   }
-  
-  ngOnInit(): void {
-    
-    // console.log(this.postSeasonAvg(this.currPlayer.id, 2018));
-    this.postSeasonAvg(this.currPlayer.id,2018);
-  }
 
+  ngOnChanges(){
+    this.postSeasonAvg(this.currPlayer.id, 2018);
+    
+  }
 }
