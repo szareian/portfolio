@@ -48,7 +48,7 @@ export class NbaApiService {
         }
         const params = new HttpParams({ fromObject: paramsObj } as HttpParamsOptions);
 
-        return this.http.get<Player[]>(this.seasonAvgUrl, { params })
+        return this.http.get<SeasonAvg[]>(this.seasonAvgUrl, { params })
             .pipe(map((res: any) => res.data),
             );
     };
