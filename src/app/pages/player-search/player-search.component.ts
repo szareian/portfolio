@@ -44,11 +44,6 @@ export class PlayerSearchComponent implements OnInit {
     let results = this.headShotBaseUrl + '/' + p.last_name + '/' + p.first_name;
     return results
   }
-  
-  trackByMethod(index: number, p: Player): number {
-    return p.id;
-  }
-
 
   onClick(p: Player){
     this.CurrPlayer = p;
@@ -56,13 +51,15 @@ export class PlayerSearchComponent implements OnInit {
     this.toggle();
   }
 
-
   toggle() {
     this.isHidden = !this.isHidden;
 
   }
-
-    
+ 
+  trackByMethod(index: number, p: Player): number {
+    return p.id;
+  }
+  
   ngOnInit(): void {
     this.players$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term

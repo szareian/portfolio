@@ -9,7 +9,7 @@
     </div>
 
     <table class="nba-player">
-        <ng-container *ngFor="let player of players$ | async; let i = index; trackBy: trackByMethod">
+        <ng-container *ngFor="let player of players$ | async; trackBy: trackByMethod">
             <td (click)='onClick(player)'>
                 <div class="picture-wrapper">
                     <div class="picture">

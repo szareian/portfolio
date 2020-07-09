@@ -10,7 +10,6 @@ $width: 1010px;
   position: relative;
 }
 
-// body class
 .no-scroll { overflow: hidden; }
 
 .nba-player {
@@ -98,7 +97,7 @@ $width: 1010px;
   
   &__content {
     position: relative;
-    width: 45%;
+    width: 66%;
     min-height: 80vh;
     max-height: 100vh;
     overflow-y: scroll; // add scroll bar if height is too long
@@ -160,12 +159,6 @@ $width: 1010px;
       width: 90%;
     }
   }
-  
-  // &[aria-hidden="false"] {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  // }
 }
 
 p {
