@@ -6,6 +6,7 @@ import { FormsModule } from "@angular/forms";
 
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
+import { NewsComponent } from "../../pages/news/news.component";
 import { PlayerSearchComponent } from '../../pages/player-search/player-search.component'; 
 import { PlayerSeasonAvgComponent } from '../../pages/player-season-avg/player-season-avg.component';
 
@@ -27,6 +28,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
   ],
   declarations: [
     DashboardComponent,
+    NewsComponent,
     UserComponent,
     TablesComponent,
     TypographyComponent,
