@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<div class=" content">
+  <div class=" row">
+    <div class=" col-md-12">
+      <div class=" card">
+        <h1>Tweeter Timeline</h1>
+        <div *ngIf="undefined === myTimeline">Loading...</div>
+        <div *ngIf="undefined !== myTimeline">
+          <div class="card">
+            <ng-container *ngFor="let tweets of myTimeline.data">
+              <blockquote class="twitter-tweet border-info mb-5">
+                  <div class="card-header">
+                    <p>{{tweets.user.name}}</p>
+                    <p>{{tweets.user.screen_name}}</p>
+                  </div>
+                  <div class="card-body text-info">
+                    <!-- <h5 class="card-title">Primary card title</h5> -->
+                    <p class="card-text">
+                      <a>{{tweets.full_text}}</a>
+                    </p>
+                  </div>
+                  <p>{{tweets.created_at}}</p>
+                  <p>{{tweets.user.location}}</p>
+                  <!-- <p>{{tweets.user.description}}</p> -->
+              </blockquote>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
