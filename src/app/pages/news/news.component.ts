@@ -20,7 +20,6 @@ export class NewsComponent implements OnInit {
       .subscribe(
         myTimeline => {
           this.myTimeline = myTimeline;
-          // console.log(this.myTimeline);
         }
       )
   }
