@@ -20,12 +20,6 @@ export const ROUTES: RouteInfo[] = [
     class: "fa"
   },
   // {
-  //   path: "/news",
-  //   title: "News",
-  //   icon: "fa-newspaper",
-  //   class: "fa"
-  // },
-  // {
   //   path: "/maps",
   //   title: "Maps",
   //   icon: "fa-map-marker",

@@ -1,5 +1,3 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
 # compiled output
 /dist
 /tmp
@@ -45,10 +43,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Backend
-# API Keys for Twitter 
-config.js
-
-# dependecies
-node_modules/
 
