@@ -31,12 +31,11 @@ export class NewsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    // Load widgets.js sccript needed to render the tweets
     let scriptEl = document.createElement('script');
     scriptEl.src = "https://platform.twitter.com/widgets.js"
 
     this.renderer2.appendChild(this.el.nativeElement, scriptEl);
-
-    // twttr.widgets.load();
   }
   
 }
