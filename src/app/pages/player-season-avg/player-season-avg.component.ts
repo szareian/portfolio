@@ -10,6 +10,7 @@ import { Player } from '../../player';
 })
 export class PlayerSeasonAvgComponent implements OnChanges {
   public playerAvg: SeasonAvg[];
+  public season: number = (new Date().getFullYear()) - 1;
   @Input() currPlayer: Player; 
 
   constructor(private nbaapiservice: NbaApiService) { }
@@ -20,12 +21,14 @@ export class PlayerSeasonAvgComponent implements OnChanges {
       .subscribe(
         (res) => {
         this.playerAvg = res
-        // console.log(this.playerAvg)
+        console.log(this.playerAvg)
         });
   }
 
   ngOnChanges(){
-    this.postSeasonAvg(this.currPlayer.id, 2018);
+    
+    this.postSeasonAvg(this.currPlayer.id, this.season);
     
   }
+  
 }
