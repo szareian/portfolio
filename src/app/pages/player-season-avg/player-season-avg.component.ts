@@ -15,13 +15,19 @@ export class PlayerSeasonAvgComponent implements OnChanges {
 
   constructor(private nbaapiservice: NbaApiService) { }
 
+  addSeason(newSeason: number) {
+    if (newSeason) {
+      this.postSeasonAvg(this.currPlayer.id, newSeason);
+      newSeason = null;
+    }
+  }
 
   postSeasonAvg(player_id: number, season: number) {
     this.nbaapiservice.getSeasonAverage(player_id,season)
       .subscribe(
         (res) => {
         this.playerAvg = res
-        console.log(this.playerAvg)
+        // console.log(this.playerAvg)
         });
   }
 

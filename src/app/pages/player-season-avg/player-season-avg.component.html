@@ -47,7 +47,11 @@
                         </tbody>
                     </table>
 
-                    <div class="table-responsive text-nowrap">
+                    <input #newSeason (keyup.enter)="addSeason(newSeason.value)" >
+                    
+                    <button class="btn btn-primary" (click)="addSeason(newSeason.value); newSeason.value=''">Add</button>
+                    
+                     <div class="table-responsive text-nowrap">
                         <table class="table mat-table table-striped">
                             <thead>
                                 <tr>
