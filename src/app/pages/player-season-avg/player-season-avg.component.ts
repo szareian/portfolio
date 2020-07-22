@@ -1,4 +1,5 @@
 import { Component, OnChanges, Input } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { NbaApiService } from "../../nba-api.service";
 import { SeasonAvg } from '../../season-average';
 import { Player } from '../../player';
@@ -14,6 +15,16 @@ export class PlayerSeasonAvgComponent implements OnChanges {
   @Input() currPlayer: Player; 
 
   constructor(private nbaapiservice: NbaApiService) { }
+
+  seasonFormControl = new FormControl('', [Validators.required]);
+
+  getErrorMessage() {
+    if (this.seasonFormControl.hasError('required')) {
+      return 'Please enter a season between 1979-' + ((new Date().getFullYear()) - 1);
+    }
+
+    return this.seasonFormControl.hasError('season') ? 'Not a valid season' : '';
+  }
 
   addSeason(newSeason: number) {
     if (newSeason) {
