@@ -11,6 +11,7 @@ import { HttpClientModule } from "@angular/common/http";
     CommonModule,
     RouterModule.forChild(AuthLayoutRoutes),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule
   ],
