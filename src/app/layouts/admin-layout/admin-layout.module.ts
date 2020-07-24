@@ -23,12 +23,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 const mat = [
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,
   MatDialogModule,
+  MatCardModule,
 ];
 
 @NgModule({
