@@ -10,7 +10,7 @@
 
     <table class="nba-player">
         <ng-container *ngFor="let player of players$ | async; trackBy: trackByMethod">
-            <td (click)='onClick(player)'>
+            <td (click)='openDialog(player)'>
                 <div class="picture-wrapper">
                     <div class="picture">
                         <img src="{{ postHeadshot(player) }}" onerror="this.src='./assets/img/default-avatar.png';">
@@ -21,24 +21,4 @@
             </td>
         </ng-container>
     </table>
-
-    <div @insertRemoveStats [hidden]="isHidden" class="card" *ngIf="CurrPlayer">
-        <div class="card__content">
-            <div class="profile">
-                <div class="profile__picture">
-                    <img src="{{ postHeadshot(CurrPlayer) }}" onerror="this.src='./assets/img/default-avatar.png';">
-                </div>
-                <div class="info">
-                    <div class="info__name">{{ CurrPlayer.first_name + ' ' + CurrPlayer.last_name}}</div>
-                    <div class="info__title">{{ CurrPlayer.position }}</div>
-                </div>
-            </div>
-
-            <app-player-season-avg [currPlayer]="CurrPlayer"></app-player-season-avg>
-            <button type="button" class="close" aria-label="Close" (click)='toggle()'>
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    </div>
-
 </div>
