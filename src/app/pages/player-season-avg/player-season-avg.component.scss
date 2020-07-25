@@ -2,7 +2,7 @@
   min-width: 150px;
   max-width: 200px;
   width: auto;
-  background-color: #353544; //rgb(52, 59, 83);
+  background-color: #353544; 
   display: inline-block;
 }
 
@@ -12,6 +12,14 @@
 
 .button {
     display: inline-block;
+}
+
+::ng-deep .mat-dialog-container,.mat-card {
+    background: #3f4764; //#272a3d; 
+}
+
+td {
+    color: rgb(185 186 192);
 }
 
 /* Rules for sizing the icon. */
@@ -70,3 +78,4 @@
         display: block;
     }
 }
+ 

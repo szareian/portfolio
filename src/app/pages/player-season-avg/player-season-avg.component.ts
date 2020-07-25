@@ -1,8 +1,9 @@
-import { Component, OnChanges, Input } from '@angular/core';
+import { Component, OnChanges, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+
 import { NbaApiService } from "../../nba-api.service";
 import { SeasonAvg } from '../../season-average';
-import { Player } from '../../player';
 
 @Component({
   selector: 'app-player-season-avg',
@@ -12,9 +13,13 @@ import { Player } from '../../player';
 export class PlayerSeasonAvgComponent implements OnChanges {
   public playerAvg: SeasonAvg[];
   public season: number = (new Date().getFullYear()) - 1;
-  @Input() currPlayer: Player; 
+  public currPlayer = this.data.CurrPlayer; 
+  public headShot = this.data.headShot;
 
-  constructor(private nbaapiservice: NbaApiService) { }
+  constructor(
+    private nbaapiservice: NbaApiService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    ) { }
 
   seasonFormControl = new FormControl('', [Validators.required]);
 
@@ -41,7 +46,7 @@ export class PlayerSeasonAvgComponent implements OnChanges {
         // console.log(this.playerAvg)
         });
   }
-
+  
   ngOnChanges(){
     
     this.postSeasonAvg(this.currPlayer.id, this.season);
