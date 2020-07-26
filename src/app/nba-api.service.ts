@@ -17,6 +17,7 @@ export class NbaApiService {
 
     private playersUrl: string = 'https://www.balldontlie.io/api/v1/players';
     private seasonAvgUrl: string = 'https://www.balldontlie.io/api/v1/season_averages';
+    private nbaSenseBaseUrl: string = 'https://data.nba.net/json'
 
     public getAllPlayers(): Observable<Player[]>{ 
         return this.http.get<Player[]>(this.playersUrl)
@@ -53,6 +54,11 @@ export class NbaApiService {
             );
     };
 
-    
+    public getTeamSchedule(team: string, year: number): Observable<any>{
+        return this.http
+            .get<any[]>(this.nbaSenseBaseUrl + '/cms/' + year + '/team/' + team + '/schedule.json')
+            .pipe(map((res: any) => res['sports_content']['game']));
+
+    }
 }
 
