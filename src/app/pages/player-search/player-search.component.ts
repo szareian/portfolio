@@ -48,7 +48,7 @@ export class PlayerSearchComponent implements OnInit {
     const dialogRef = this.dialog.open(PlayerSeasonAvgComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
     });
   }
 

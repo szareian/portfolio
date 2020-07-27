@@ -9,7 +9,7 @@
 
                 <!-- content in the box on the left -->
                 <div class="col-sm py-2">
-                        <!-- <span class="float-right" matBadgeColor="warning" matBadge="Status: {{ game.period_time.period_status }}" matBadgeOverlap="false">.</span> -->
+                    <!-- <span class="float-right" matBadgeColor="warning" matBadge="Status: {{ game.period_time.period_status }}" matBadgeOverlap="false">.</span> -->
                     <div class="card  bg-dark shadow">
                         <div class="card-body">
                             <div class="d-flex justify-content-around text-uppercase">
@@ -29,9 +29,9 @@
                                 <div class="float-left text-muted small">
                                     Arena: {{ game.arena }}, {{ game.city }}
                                 </div>
-                            
+
                                 <div class="float-right text-muted small">
-                                    {{ game.date }}
+                                    {{ getGameDate(game.date,game.time) }}
                                 </div>
                             </div>
 
@@ -76,9 +76,10 @@
                         <div class="col">&nbsp;</div>
                     </div>
                 </div>
-                
+
                 <!-- content in the box on the right -->
                 <div class="col-sm py-2">
+                    <!-- <span class="float-right" matBadgeColor="warning" matBadge="Status: {{ game.period_time.period_status }}" matBadgeOverlap="false">.</span> -->
                     <div class="card  bg-dark shadow">
                         <div class="card-body">
                             <div class="d-flex justify-content-around text-uppercase">
@@ -92,21 +93,22 @@
                                     {{ game.visitor.nickname }}
                                 </h2>
                             </div>
-                
-                
+
+
                             <div class="card-footer">
                                 <div class="float-left text-muted small">
                                     Arena: {{ game.arena }}, {{ game.city }}
                                 </div>
-                
+
                                 <div class="float-right text-muted small">
-                                    {{ game.date }}
+                                    {{ getGameDate(game.date,game.time) }}
                                 </div>
                             </div>
-                
+
                         </div>
                     </div>
                 </div>
+
             </div>
             <!--/row-->
 

@@ -18,6 +18,19 @@ export class TeamScheduleComponent implements OnInit {
 
     constructor(private nbaapiservice: NbaApiService) { }
 
+    getGameDate(d : string, time: string){
+        let game_date = d.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
+        
+        var full_date = new Date(game_date).toUTCString();
+        full_date = full_date.substring(0, full_date.indexOf(' 00'))
+
+        if (time != "") {
+            let game_time = time.replace(/(\d{2})(\d{2})/g, '$1:$2');
+            full_date = full_date + " at " + game_time;
+        }
+        return full_date
+    }
+    
     postTeamSchedule(team: string, year: number) {
         this.nbaapiservice.getTeamSchedule(team, year).subscribe(
             (res) => {
@@ -27,7 +40,7 @@ export class TeamScheduleComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.postTeamSchedule('raptors', 2018);
+        this.postTeamSchedule('clippers', 2019);
     }
 }
 
