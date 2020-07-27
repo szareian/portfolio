@@ -19,6 +19,12 @@ export const ROUTES: RouteInfo[] = [
     icon: "fa-newspaper",
     class: "fa"
   },
+  {
+    path: "/schedule",
+    title: "Team Schedule",
+    icon: "fa-calendar-alt",
+    class: "fa"
+  },
   // {
   //   path: "/maps",
   //   title: "Maps",

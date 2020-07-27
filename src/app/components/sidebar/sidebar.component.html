@@ -16,7 +16,7 @@
       class="nav-item"
     >
       <a [routerLink]="[menuItem.path]">
-        <i class="{{ menuItem.class }} {{ menuItem.icon }}"></i>
+        <i class="{{ menuItem.class }} {{ menuItem.icon }}" aria-hidden="true"></i>
         <p>{{ menuItem.title }}</p>
       </a>
     </li>

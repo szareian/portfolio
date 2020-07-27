@@ -9,7 +9,7 @@ import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { NewsComponent } from "../../pages/news/news.component";
 import { PlayerSearchComponent } from '../../pages/player-search/player-search.component'; 
 import { PlayerSeasonAvgComponent } from '../../pages/player-season-avg/player-season-avg.component';
-
+import { TeamScheduleComponent } from "../../pages/team-schedule/team-schedule.component";
 import { MapComponent } from "../../pages/map/map.component";
 import { NotificationsComponent } from "../../pages/notifications/notifications.component";
 import { UserComponent } from "../../pages/user/user.component";
@@ -59,7 +59,8 @@ const mat = [
     NotificationsComponent,
     MapComponent,
     PlayerSearchComponent,
-    PlayerSeasonAvgComponent
+    PlayerSeasonAvgComponent,
+    TeamScheduleComponent,
   ]
 })
 export class AdminLayoutModule {}
