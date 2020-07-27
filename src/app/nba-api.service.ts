@@ -57,7 +57,8 @@ export class NbaApiService {
     public getTeamSchedule(team: string, year: number): Observable<any>{
         return this.http
             .get<any[]>(this.nbaSenseBaseUrl + '/cms/' + year + '/team/' + team + '/schedule.json')
-            .pipe(map((res: any) => res['sports_content']['game']));
+            .pipe(map((res: any) => res['sports_content']['game']))
+            .pipe(map((gameList: any) => gameList.reverse()))
 
     }
 }
