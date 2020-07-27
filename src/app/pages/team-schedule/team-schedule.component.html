@@ -1,10 +1,13 @@
 <div class=" content">
     <h2 class="font-weight-light text-center text-muted py-3">Team Schedule</h2>
 
-    <div class="container py-2" *ngFor="let game of schedule; even as isEven; odd as isOdd ">
-        <!--/row-->
+    <div class="container py-2">
+        <ng-container *ngFor="let game of schedule; even as isEven; odd as isOdd ">
         <!-- timeline item 1 -->
-        <div class="row no-gutters" *ngIf="isEven">
+        <!-- row of each timeline -->
+        <div class="row no-gutters" *ngIf="isEven"> 
+
+            <!-- content in the box of timeline 1å -->
             <div class="col-sm py-2">
                 <div class="card border-success shadow">
                     <div class="card-body">
@@ -26,6 +29,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- the fot and the two lines before and after it -->
             <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
                 <div class="row h-50">
                     <div class="col border-right">&nbsp;</div>
@@ -43,9 +48,7 @@
                 <!--spacer-->
             </div>
         </div>
-        <!--/row-->
-
-
+        
         <!-- timeline item 2 -->
         <div class="row no-gutters" *ngIf="isOdd">
             <div class="col-sm">
@@ -81,6 +84,7 @@
         </div>
         <!--/row-->
 
+        </ng-container>
 
     </div>
 
