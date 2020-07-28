@@ -1,19 +1,19 @@
 <div class=" content">
-    <h2 class="font-weight-light text-center text-muted py-3">Team Schedule</h2>
 
     <div class="container py-2">
-        <ng-container *ngFor="let game of schedule; even as isEven; odd as isOdd ">
+        <h2 class="font-weight-light text-center text-muted py-3">Team Schedule</h2>
+
+        <ng-container *ngFor="let game of schedule; even as isEven; odd as isOdd; first as isFirst ">
+
             <!-- timeline item 1 -->
             <!-- row of each timeline -->
             <div class="row no-gutters" *ngIf="isEven">
 
                 <!-- content in the box on the left -->
                 <div class="col-sm py-2">
+                    <span class="badge badge-pill badge-info float-right">Status:
+                        {{ game.period_time.period_status }}</span>
                     <div class="card  bg-dark shadow">
-
-                        <span class="float-right" matBadgeColor="primary"
-                            matBadge="Status: {{ game.period_time.period_status }}" matBadgeSize="small"
-                            matBadgeOverlap="false">.</span>
 
                         <div class="card-body">
                             <div class="d-flex justify-content-around text-uppercase">
@@ -83,11 +83,11 @@
 
                 <!-- content in the box on the right -->
                 <div class="col-sm py-2">
+                    <span class="badge badge-pill badge-info float-right">Status:
+                        {{ game.period_time.period_status }}</span>
+
                     <div class="card  bg-dark shadow">
 
-                        <span class="float-right" matBadgeColor="primary"
-                            matBadge="Status: {{ game.period_time.period_status }}" matBadgeSize="small"
-                            matBadgeOverlap="false">.</span>
 
                         <div class="card-body">
                             <div class="d-flex justify-content-around text-uppercase">
