@@ -30,7 +30,7 @@
                                 </h2>
                             </div>
 
-                            <div class="row no-gutters justify-content-md-around">
+                            <div class="row no-gutters justify-content-md-around" *ngIf="game.home.score != ''">
                                 <strong class="col-4 text-right text-light large">
                                     {{ game.home.score }}
                                 </strong>
@@ -43,17 +43,35 @@
                                 </strong>
                             </div>
 
+                            <!-- In case of no scores -->
+                            <div class="row no-gutters justify-content-md-around" *ngIf="game.home.score == ''">
+                                <strong class="col-4 text-right text-light">
+                                    <span class="material-icons">
+                                        maximize
+                                    </span>
+                                </strong>
+
+                                <strong class="col-2">
+                                </strong>
+
+                                <strong class="col-4 text-left text-light">
+                                    <span class="material-icons">
+                                        maximize
+                                    </span>
+                                </strong>
+                            </div>
+
                             <div class="row pt-2 px-3 no-gutters">
                                 <small class="col-6 text-left text-muted">
                                     Arena: {{ game.arena }}, {{ game.city }}
                                 </small>
-                            
+
                                 <small class=" col-6 text-right text-muted">
                                     {{ getGameDate(game.date,game.time) }}
                                 </small>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
 
@@ -100,44 +118,64 @@
                     <span class="badge badge-pill badge-info float-right">Status:
                         {{ game.period_time.period_status }}</span>
                     <div class="card  bg-dark shadow">
-                
+
                         <div class="card-title">
                             <div class="row d-flex  text-center text-uppercase">
                                 <h2 class="col-5 font-weight-bold text-danger medium">
                                     {{ game.home.nickname }}
                                 </h2>
-                
+
                                 <div class="col-2 pt-3 text-info small">
                                     V.S.
                                 </div>
-                
+
                                 <h2 class="col-5 font-weight-bold text-danger medium">
                                     {{ game.visitor.nickname }}
                                 </h2>
                             </div>
-                
-                            <div class="row no-gutters justify-content-md-around">
+
+                            <div class="row no-gutters justify-content-md-around" *ngIf="game.home.score != ''">
                                 <strong class="col-4 text-right text-light large">
                                     {{ game.home.score }}
                                 </strong>
+
                                 <strong class="col-2">
                                 </strong>
+
                                 <strong class="col-4 text-left text-light large">
                                     {{ game.visitor.score }}
                                 </strong>
                             </div>
-                
+
+                            <!-- In case of no scores -->
+                            <div class="row no-gutters justify-content-md-around" *ngIf="game.home.score == ''">
+                                <strong class="col-4 text-right text-light">
+                                    <span class="material-icons">
+                                        maximize
+                                    </span>
+                                </strong>
+
+                                <strong class="col-2">
+                                </strong>
+
+                                <strong class="col-4 text-left text-light">
+                                    <span class="material-icons">
+                                        maximize
+                                    </span>
+                                </strong>
+                            </div>
+
                             <div class="row pt-2 px-3 no-gutters">
                                 <small class="col-6 text-left text-muted">
                                     Arena: {{ game.arena }}, {{ game.city }}
                                 </small>
-                
+
                                 <small class=" col-6 text-right text-muted">
                                     {{ getGameDate(game.date,game.time) }}
                                 </small>
                             </div>
                         </div>
-                
+
                     </div>
                 </div>
 
