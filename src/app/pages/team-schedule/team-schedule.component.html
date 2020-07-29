@@ -10,41 +10,55 @@
             <div class="row no-gutters" *ngIf="isEven">
 
                 <!-- content in the box on the left -->
-                <div class="col-sm py-2">
+                <div class="col-5 py-2">
                     <span class="badge badge-pill badge-info float-right">Status:
                         {{ game.period_time.period_status }}</span>
                     <div class="card  bg-dark shadow">
 
-                        <div class="card-body">
-                            <div class="d-flex justify-content-around text-uppercase">
-                                <h2 class="p-2 justify-content-left font-weight-bold text-danger large">
+                        <div class="card-title">
+                            <div class="row d-flex  text-center text-uppercase">
+                                <h2 class="col-5 font-weight-bold text-danger medium">
                                     {{ game.home.nickname }}
                                 </h2>
-                                <div class="p-4 justify-content-center text-info small">
+
+                                <div class="col-2 pt-3 text-info small">
                                     V.S.
                                 </div>
-                                <h2 class="p-2 justify-content-right font-weight-bold text-danger large">
+
+                                <h2 class="col-5 font-weight-bold text-danger medium">
                                     {{ game.visitor.nickname }}
                                 </h2>
                             </div>
 
+                            <div class="row no-gutters justify-content-md-around">
+                                <strong class="col-4 text-right text-light large">
+                                    {{ game.home.score }}
+                                </strong>
 
-                            <div class="card-footer">
-                                <div class="float-left text-muted small">
-                                    Arena: {{ game.arena }}, {{ game.city }}
-                                </div>
+                                <strong class="col-2">
+                                </strong>
 
-                                <div class="float-right text-muted small">
-                                    {{ getGameDate(game.date,game.time) }}
-                                </div>
+                                <strong class="col-4 text-left text-light large">
+                                    {{ game.visitor.score }}
+                                </strong>
                             </div>
 
+                            <div class="row pt-2 px-3 no-gutters">
+                                <small class="col-6 text-left text-muted">
+                                    Arena: {{ game.arena }}, {{ game.city }}
+                                </small>
+                            
+                                <small class=" col-6 text-right text-muted">
+                                    {{ getGameDate(game.date,game.time) }}
+                                </small>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
                 <!-- the dot and the two lines before and after it -->
-                <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                <div class="col-2 text-center flex-column d-none d-sm-flex">
                     <div class="row h-50">
                         <div class="col border-right">&nbsp;</div>
                         <div class="col">&nbsp;</div>
@@ -57,17 +71,17 @@
                         <div class="col">&nbsp;</div>
                     </div>
                 </div>
-                <div class="col-sm">
+                <div class="col-5">
                     <!--spacer-->
                 </div>
             </div>
 
             <!-- timeline item 2 -->
             <div class="row no-gutters" *ngIf="isOdd">
-                <div class="col-sm">
+                <div class="col-5">
                     <!--spacer-->
                 </div>
-                <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                <div class="col-2 text-center flex-column d-none d-sm-flex">
                     <div class="row h-50">
                         <div class="col border-right">&nbsp;</div>
                         <div class="col">&nbsp;</div>
@@ -82,44 +96,52 @@
                 </div>
 
                 <!-- content in the box on the right -->
-                <div class="col-sm py-2">
+                <div class="col-5 py-2">
                     <span class="badge badge-pill badge-info float-right">Status:
                         {{ game.period_time.period_status }}</span>
-
                     <div class="card  bg-dark shadow">
-
-
-                        <div class="card-body">
-                            <div class="d-flex justify-content-around text-uppercase">
-                                <h2 class="p-2 justify-content-left font-weight-bold text-danger large">
+                
+                        <div class="card-title">
+                            <div class="row d-flex  text-center text-uppercase">
+                                <h2 class="col-5 font-weight-bold text-danger medium">
                                     {{ game.home.nickname }}
                                 </h2>
-                                <div class="p-4 justify-content-center text-info small">
+                
+                                <div class="col-2 pt-3 text-info small">
                                     V.S.
                                 </div>
-                                <h2 class="p-2 justify-content-right font-weight-bold text-danger large">
+                
+                                <h2 class="col-5 font-weight-bold text-danger medium">
                                     {{ game.visitor.nickname }}
                                 </h2>
                             </div>
-
-
-                            <div class="card-footer">
-                                <div class="float-left text-muted small">
-                                    Arena: {{ game.arena }}, {{ game.city }}
-                                </div>
-
-                                <div class="float-right text-muted small">
-                                    {{ getGameDate(game.date,game.time) }}
-                                </div>
+                
+                            <div class="row no-gutters justify-content-md-around">
+                                <strong class="col-4 text-right text-light large">
+                                    {{ game.home.score }}
+                                </strong>
+                                <strong class="col-2">
+                                </strong>
+                                <strong class="col-4 text-left text-light large">
+                                    {{ game.visitor.score }}
+                                </strong>
                             </div>
-
+                
+                            <div class="row pt-2 px-3 no-gutters">
+                                <small class="col-6 text-left text-muted">
+                                    Arena: {{ game.arena }}, {{ game.city }}
+                                </small>
+                
+                                <small class=" col-6 text-right text-muted">
+                                    {{ getGameDate(game.date,game.time) }}
+                                </small>
+                            </div>
                         </div>
+                
                     </div>
                 </div>
 
             </div>
-            <!--/row-->
-
         </ng-container>
 
     </div>
