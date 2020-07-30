@@ -2,25 +2,26 @@
 
     <div class="container-fluid">
 
-        <div class="row no-gutters">
+        <div class="row no-gutters" [formGroup]="profileForm">
             
             <div class="col-2">
-                <input id="typeahead-focus" type="text" class="form-control"
-                placeholder="Search for a team..." [(ngModel)]="selectedTeam"
-                        [ngbTypeahead]="search" (focus)="focus$.next($any($event).target.value)"
-                        (click)="click$.next($any($event).target.value)" #instance="ngbTypeahead" 
-                        ngbPopover="e.g. lakers" triggers="mouseenter:mouseleave"/>
+                <input id="typeahead-focus" type="text" class="form-control" formControlName="selectedTeam"
+                placeholder="Search for a team..." [ngbTypeahead]="search" (focus)="focus$.next($any($event).target.value)"
+                (click)="click$.next($any($event).target.value)" #instance="ngbTypeahead" ngbPopover="e.g. lakers" triggers="mouseenter:mouseleave"/>
 
                 </div>
                 <div class="col-2">
-                    <input class="form-control" id="season" placeholder="Season" 
+                    <input class="form-control" id="season" placeholder="Season"  formControlName="season"
                     ngbPopover="e.g. for 2019-2020 NBA season, enter '2019'" triggers="mouseenter:mouseleave" >
                     
                 </div>                
                 <div class="col-1">
-                    <button type="submit" class="btn-primary form-control" >Show</button>
+                    <button type="submit" class="btn-primary form-control" [formGroup]="profileForm" (click)="onSubmit()" >Show</button>
                 </div>
             </div>
+            <!-- <p>
+                Form Value: {{ profileForm.value | json }}
+            </p> -->
     </div>
 
 

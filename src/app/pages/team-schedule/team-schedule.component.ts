@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subject, merge } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
+import { FormBuilder } from '@angular/forms';
 
 
 import { NbaApiService } from "../../nba-api.service";
@@ -17,30 +18,20 @@ export class TeamScheduleComponent implements OnInit {
     public focus$ = new Subject<string>();
     public click$ = new Subject<string>();
     public schedule: Observable<any>;
-    public teams: string[] = ['hawks', 'celtics', 'nets', 'hornets', 'bulls', 'cavaliers', 'mavericks', 'nuggets', 'pistons', 'warriors',
+    public teamsUnsorted: string[] = ['hawks', 'celtics', 'nets', 'hornets', 'bulls', 'cavaliers', 'mavericks', 'nuggets', 'pistons', 'warriors',
     'rockets', 'pacers', 'clippers', 'lakers', 'grizzlies', 'heat', 'bucks', 'timberwolves', 'pelicans', 'knicks', 'thunder', 'magic', 'sixers',
     'suns', 'blazers', 'kings', 'spurs', 'raptors', 'jazz', 'wizards'];
-    public teamsSorted = this.teams.sort();
+    public teams = this.teamsUnsorted.sort();
     public selectedTeam: any;
+    public profileForm = this.fb.group({
+        selectedTeam: ['raptors'],
+        season:[2018],
+    });
 
-    constructor(private nbaapiservice: NbaApiService) { }
+    constructor(
+        private nbaapiservice: NbaApiService,
+        private fb: FormBuilder) { }
     
-    topBtnFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
-
-    jumpToTop(){
-        var topbutton = document.getElementById("topBtn");
-        // When the user scrolls down 1000px from the top of the document, show the button
-        window.onscroll = function () { 
-            if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-                topbutton.style.display = "block";
-            } else {
-                topbutton.style.display = "none";
-            }
-         };
-    }
 
     search = (text$: Observable<string>) => {
         const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
@@ -48,9 +39,15 @@ export class TeamScheduleComponent implements OnInit {
         const inputFocus$ = this.focus$;
 
         return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
-            map(term => (term === '' ? this.teamsSorted
-                : this.teamsSorted.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 5))
+            map(term => (term === '' ? this.teams
+                : this.teams.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 5))
         );
+    }
+
+    onSubmit() {
+        // TODO: Use EventEmitter with form value
+        // console.warn(this.profileForm.value);
+        this.postTeamSchedule(this.profileForm.controls['selectedTeam'].value, this.profileForm.controls['season'].value);
     }
 
     getGameDate(d : string, time: string){
@@ -74,10 +71,29 @@ export class TeamScheduleComponent implements OnInit {
             });
     }
 
+    topBtnFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+    jumpToTop() {
+        var topbutton = document.getElementById("topBtn");
+        // When the user scrolls down 1000px from the top of the document, show the button
+        window.onscroll = function () {
+            if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+                topbutton.style.display = "block";
+            } else {
+                topbutton.style.display = "none";
+            }
+        };
+    }
+
     ngOnInit() {
         this.jumpToTop();
 
-        this.postTeamSchedule('raptors', 2018);
+        console.log(this.profileForm.controls['selectedTeam'].value);
+        
+        this.postTeamSchedule(this.profileForm.controls['selectedTeam'].value, this.profileForm.controls['season'].value);
     }
 }
 
