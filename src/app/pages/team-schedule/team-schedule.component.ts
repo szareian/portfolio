@@ -24,8 +24,23 @@ export class TeamScheduleComponent implements OnInit {
     public selectedTeam: any;
 
     constructor(private nbaapiservice: NbaApiService) { }
+    
+    topBtnFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
 
-
+    jumpToTop(){
+        var topbutton = document.getElementById("topBtn");
+        // When the user scrolls down 1000px from the top of the document, show the button
+        window.onscroll = function () { 
+            if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+                topbutton.style.display = "block";
+            } else {
+                topbutton.style.display = "none";
+            }
+         };
+    }
 
     search = (text$: Observable<string>) => {
         const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
@@ -60,7 +75,9 @@ export class TeamScheduleComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.postTeamSchedule('raptors', 2018);
+        this.jumpToTop();
+
+        this.postTeamSchedule('raptors', 2018);
     }
 }
 
