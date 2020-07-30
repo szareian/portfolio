@@ -1,9 +1,33 @@
 <div class=" content">
 
+    <div class="container-fluid">
+
+        <div class="row no-gutters">
+            
+            <div class="col-2">
+                <input id="typeahead-focus" type="text" class="form-control"
+                placeholder="Search for a team..." [(ngModel)]="selectedTeam"
+                        [ngbTypeahead]="search" (focus)="focus$.next($any($event).target.value)"
+                        (click)="click$.next($any($event).target.value)" #instance="ngbTypeahead" 
+                        ngbPopover="e.g. lakers" triggers="mouseenter:mouseleave"/>
+
+                </div>
+                <div class="col-2">
+                    <input class="form-control" id="season" placeholder="Season" 
+                    ngbPopover="e.g. for 2019-2020 NBA season, enter '2019'" triggers="mouseenter:mouseleave" >
+                    
+                </div>                
+                <div class="col-1">
+                    <button type="submit" class="btn-primary form-control" >Show</button>
+                </div>
+            </div>
+    </div>
+
+
     <div class="container py-2">
         <h2 class="font-weight-light text-center text-muted py-3">Team Schedule</h2>
 
-        <ng-container *ngFor="let game of schedule; even as isEven; odd as isOdd; first as isFirst ">
+        <ng-container *ngFor="let game of schedule; even as isEven; odd as isOdd">
 
             <!-- timeline item 1 -->
             <!-- row of each timeline -->
