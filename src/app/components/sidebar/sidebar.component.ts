@@ -14,15 +14,15 @@ export const ROUTES: RouteInfo[] = [
     class: "fa"
   },
   {
-    path: "/news",
-    title: "News",
-    icon: "fa-newspaper",
-    class: "fa"
-  },
-  {
     path: "/schedule",
     title: "Team Schedule",
     icon: "fa-calendar-alt",
+    class: "fa"
+  },
+  {
+    path: "/news",
+    title: "News",
+    icon: "fa-newspaper",
     class: "fa"
   },
   // {
