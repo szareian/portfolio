@@ -23,9 +23,9 @@ export class TeamScheduleComponent implements OnInit {
     'suns', 'blazers', 'kings', 'spurs', 'raptors', 'jazz', 'wizards'];
     public teams = this.teamsUnsorted.sort();
     public selectedTeam: any;
-    public profileForm = this.fb.group({
-        selectedTeam: ['raptors'],
-        season:[2018],
+    public timelineForm = this.fb.group({
+        selectedTeam: [''],
+        season:[],
     });
 
     constructor(
@@ -46,8 +46,9 @@ export class TeamScheduleComponent implements OnInit {
 
     onSubmit() {
         // TODO: Use EventEmitter with form value
-        // console.warn(this.profileForm.value);
-        this.postTeamSchedule(this.profileForm.controls['selectedTeam'].value, this.profileForm.controls['season'].value);
+        this.postTeamSchedule(this.timelineForm.controls['selectedTeam'].value, this.timelineForm.controls['season'].value);
+        // console.warn(this.timelineForm.value);
+        this.timelineForm.reset();
     }
 
     getGameDate(d : string, time: string){
@@ -90,10 +91,8 @@ export class TeamScheduleComponent implements OnInit {
 
     ngOnInit() {
         this.jumpToTop();
-
-        console.log(this.profileForm.controls['selectedTeam'].value);
-        
-        this.postTeamSchedule(this.profileForm.controls['selectedTeam'].value, this.profileForm.controls['season'].value);
+                
+        this.postTeamSchedule('raptors', 2018);
     }
 }
 
