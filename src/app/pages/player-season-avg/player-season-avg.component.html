@@ -56,7 +56,7 @@
                                 </tbody>
                             </table>
 
-                            <form class="season-box">
+                            <!-- <form class="season-box">
                                 <mat-form-field color='warn' appearance="fill">
                                     <mat-label>Season</mat-label>
                                     <input matInput maxlength="4" [formControl]="seasonFormControl" placeholder="2019"
@@ -69,7 +69,22 @@
                                 <span class="material-icons md-48">
                                     add_circle
                                 </span>
-                            </button>
+                            </button> -->
+                            <div class="container-fluid">
+                            
+                                <div class="row no-gutters" [formGroup]="seasonAvgForm">
+                            
+                                    <div class="col-2">
+                                        <input class="form-control" id="season" placeholder="Season" formControlName="season"
+                                    ngbPopover="Add {{ currPlayer.first_name }} {{ currPlayer.last_name }}'s seasonal average to the table below" triggers="mouseenter:mouseleave">
+                            
+                                    </div>
+                                    <div class="col-1">
+                                        <button type="submit" class="btn-info form-control" [formGroup]="seasonAvgForm"
+                                            (click)="addSeason()">Add</button>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="table-responsive text-nowrap">
                                 <table class="table mat-table table-striped">

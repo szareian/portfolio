@@ -1,5 +1,6 @@
 import { Component, OnChanges, Inject } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormBuilder, Validators } from '@angular/forms';
+
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 import { NbaApiService } from "../../nba-api.service";
@@ -15,27 +16,31 @@ export class PlayerSeasonAvgComponent implements OnChanges {
   public season: number = (new Date().getFullYear()) - 1;
   public currPlayer = this.data.CurrPlayer; 
   public headShot = this.data.headShot;
+  public seasonAvgForm = this.fb.group({
+    season: [],
+  });
 
   constructor(
     private nbaapiservice: NbaApiService,
+    private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
     ) { }
 
-  seasonFormControl = new FormControl('', [Validators.required]);
+  // seasonFormControl = new FormControl('', [Validators.required]);
 
-  getErrorMessage() {
-    if (this.seasonFormControl.hasError('required')) {
-      return 'Please enter a season between 1979-' + ((new Date().getFullYear()) - 1);
-    }
+  // getErrorMessage() {
+  //   if (this.seasonFormControl.hasError('required')) {
+  //     return 'Please enter a season between 1979-' + ((new Date().getFullYear()) - 1);
+  //   }
 
-    return this.seasonFormControl.hasError('season') ? 'Not a valid season' : '';
-  }
+  //   return this.seasonFormControl.hasError('season') ? 'Not a valid season' : '';
+  // }
+  
+  addSeason() {
+    let newSeason = this.seasonAvgForm.controls['season'].value;
+    this.postSeasonAvg(this.currPlayer.id, newSeason);
 
-  addSeason(newSeason: number) {
-    if (newSeason) {
-      this.postSeasonAvg(this.currPlayer.id, newSeason);
-      newSeason = null;
-    }
+    this.seasonAvgForm.reset();
   }
 
   postSeasonAvg(player_id: number, season: number) {
