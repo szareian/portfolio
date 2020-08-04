@@ -4,7 +4,6 @@ import { Observable, Subject, merge } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { FormBuilder } from '@angular/forms';
 
-
 import { NbaApiService } from "../../nba-api.service";
 
 @Component({
@@ -45,9 +44,10 @@ export class TeamScheduleComponent implements OnInit {
     }
 
     onSubmit() {
-        // TODO: Use EventEmitter with form value
-        this.postTeamSchedule(this.timelineForm.controls['selectedTeam'].value, this.timelineForm.controls['season'].value);
-        // console.warn(this.timelineForm.value);
+        let t = this.timelineForm.controls['selectedTeam'].value;
+        let s = this.timelineForm.controls['season'].value;
+        this.postTeamSchedule(t, s);
+
         this.timelineForm.reset();
     }
 

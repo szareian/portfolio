@@ -62,7 +62,6 @@
                                     <input matInput maxlength="4" [formControl]="seasonFormControl" placeholder="2019"
                                         #newSeason (keyup.enter)="addSeason(newSeason.value)" autocomplete="off"
                                         required>
-                                    <!-- <mat-error *ngIf="seasonFormControl.invalid">Please enter a number</mat-error> -->
                                     <mat-error *ngIf="seasonFormControl.invalid">{{getErrorMessage()}}</mat-error>
                                 </mat-form-field>
                             </form>
