@@ -1,7 +1,11 @@
-h1 {
-  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
-  font-weight: bold;
-  color: rgb(67, 67, 236);
+.card {
+  background-color: #252738;
+  
+  .card-header {
+    padding: 2%;
+    color: #ffffff; 
+    font-family: revert;
+  }
 }
 
 blockquote.twitter-tweet a:hover,

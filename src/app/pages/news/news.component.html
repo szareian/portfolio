@@ -4,7 +4,7 @@
   <div class=" row">
     <div class=" col-md-12">
       <div class=" card">
-        <h1>Twitter Timeline</h1>
+        <div class="card-header display-4 text-center">Twitter Timeline</div>
         <div *ngIf="undefined === myTimeline">Loading...</div>
         
         <ng-container *ngFor="let tweets of myTimeline.data">
