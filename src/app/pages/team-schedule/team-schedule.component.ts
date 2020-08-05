@@ -3,6 +3,7 @@ import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subject, merge } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { FormBuilder } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { NbaApiService } from "../../nba-api.service";
 
@@ -17,11 +18,9 @@ export class TeamScheduleComponent implements OnInit {
     public focus$ = new Subject<string>();
     public click$ = new Subject<string>();
     public schedule: Observable<any>;
-    public teamsUnsorted: string[] = ['hawks', 'celtics', 'nets', 'hornets', 'bulls', 'cavaliers', 'mavericks', 'nuggets', 'pistons', 'warriors',
+    public teams: string[] = ['hawks', 'celtics', 'nets', 'hornets', 'bulls', 'cavaliers', 'mavericks', 'nuggets', 'pistons', 'warriors',
     'rockets', 'pacers', 'clippers', 'lakers', 'grizzlies', 'heat', 'bucks', 'timberwolves', 'pelicans', 'knicks', 'thunder', 'magic', 'sixers',
-    'suns', 'blazers', 'kings', 'spurs', 'raptors', 'jazz', 'wizards'];
-    public teams = this.teamsUnsorted.sort();
-    public selectedTeam: any;
+    'suns', 'blazers', 'kings', 'spurs', 'raptors', 'jazz', 'wizards'].sort();
     public timelineForm = this.fb.group({
         selectedTeam: [''],
         season:[],
@@ -29,7 +28,8 @@ export class TeamScheduleComponent implements OnInit {
 
     constructor(
         private nbaapiservice: NbaApiService,
-        private fb: FormBuilder) { }
+        private fb: FormBuilder,
+        private _snackBar: MatSnackBar) { }
     
 
     search = (text$: Observable<string>) => {
@@ -43,10 +43,23 @@ export class TeamScheduleComponent implements OnInit {
         );
     }
 
+    displayWhichTeam(team, season){
+        let message_team = team.replace(/^./, team[0].toUpperCase());;
+        let message_season = season + '-' + (Number(season) + 1) + ' season';
+        this._snackBar.open(message_team, message_season, {
+            duration: 4000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+        });
+
+    }
+
     onSubmit() {
         let t = this.timelineForm.controls['selectedTeam'].value;
         let s = this.timelineForm.controls['season'].value;
         this.postTeamSchedule(t, s);
+        
+        this.displayWhichTeam(t,s);
 
         this.timelineForm.reset();
     }
@@ -91,8 +104,10 @@ export class TeamScheduleComponent implements OnInit {
 
     ngOnInit() {
         this.jumpToTop();
-                
-        this.postTeamSchedule('raptors', 2018);
+        let team= 'raptors';
+        let season = 2018;
+        this.displayWhichTeam(team, season)
+        this.postTeamSchedule(team, season);
     }
 }
 
