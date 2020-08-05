@@ -27,6 +27,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 const mat = [
   MatFormFieldModule,
@@ -37,6 +39,7 @@ const mat = [
   MatTableModule,
   MatToolbarModule,
   MatBadgeModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({
