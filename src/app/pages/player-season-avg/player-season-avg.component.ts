@@ -1,6 +1,5 @@
 import { Component, OnChanges, Inject } from '@angular/core';
-import { FormControl, FormBuilder, Validators } from '@angular/forms';
-
+import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 import { NbaApiService } from "../../nba-api.service";
@@ -26,16 +25,6 @@ export class PlayerSeasonAvgComponent implements OnChanges {
     @Inject(MAT_DIALOG_DATA) public data: any,
     ) { }
 
-  // seasonFormControl = new FormControl('', [Validators.required]);
-
-  // getErrorMessage() {
-  //   if (this.seasonFormControl.hasError('required')) {
-  //     return 'Please enter a season between 1979-' + ((new Date().getFullYear()) - 1);
-  //   }
-
-  //   return this.seasonFormControl.hasError('season') ? 'Not a valid season' : '';
-  // }
-  
   addSeason() {
     let newSeason = this.seasonAvgForm.controls['season'].value;
     this.postSeasonAvg(this.currPlayer.id, newSeason);

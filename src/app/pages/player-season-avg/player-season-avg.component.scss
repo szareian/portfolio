@@ -1,24 +1,3 @@
-.season-box {
-  min-width: 150px;
-  max-width: 200px;
-  width: auto;
-  background-color: #353544; 
-  display: inline-block;
-  
-  input {
-      color: white;
-  }
-
-  ::placeholder{
-    color: teal;
-  }
-  
-  .button {
-      display: inline-block;
-  }
-}
-
-
 ::ng-deep .mat-dialog-container,.mat-card {
     background: #3f4764; //#272a3d; 
 }
