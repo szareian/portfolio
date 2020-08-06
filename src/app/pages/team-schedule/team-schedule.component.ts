@@ -44,7 +44,7 @@ export class TeamScheduleComponent implements OnInit {
     }
 
     displayWhichTeam(team, season){
-        let message_team = team.replace(/^./, team[0].toUpperCase());;
+        let message_team = team.replace(/^./, team[0].toUpperCase());
         let message_season = season + '-' + (Number(season) + 1) + ' season';
         this._snackBar.open(message_team, message_season, {
             duration: 4000,
