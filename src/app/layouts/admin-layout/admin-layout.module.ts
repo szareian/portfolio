@@ -10,11 +10,6 @@ import { NewsComponent } from "../../pages/news/news.component";
 import { PlayerSearchComponent } from '../../pages/player-search/player-search.component'; 
 import { PlayerSeasonAvgComponent } from '../../pages/player-season-avg/player-season-avg.component';
 import { TeamScheduleComponent } from "../../pages/team-schedule/team-schedule.component";
-import { MapComponent } from "../../pages/map/map.component";
-import { NotificationsComponent } from "../../pages/notifications/notifications.component";
-import { UserComponent } from "../../pages/user/user.component";
-import { TablesComponent } from "../../pages/tables/tables.component";
-import { TypographyComponent } from "../../pages/typography/typography.component";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
@@ -58,11 +53,6 @@ const mat = [
   declarations: [
     DashboardComponent,
     NewsComponent,
-    UserComponent,
-    TablesComponent,
-    TypographyComponent,
-    NotificationsComponent,
-    MapComponent,
     PlayerSearchComponent,
     PlayerSeasonAvgComponent,
     TeamScheduleComponent,
