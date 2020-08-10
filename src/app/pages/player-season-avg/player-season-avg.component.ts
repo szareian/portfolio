@@ -37,7 +37,6 @@ export class PlayerSeasonAvgComponent implements OnChanges {
       .subscribe(
         (res) => {
         this.playerAvg = res
-        // console.log(this.playerAvg)
         });
   }
   
