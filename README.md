@@ -1,5 +1,4 @@
 ## Portfolio
-[![Build Status](https://img.shields.io/jenkins/s/https/builds.apache.org/job/commons-lang.svg)](https://szareian.github.io/portfolio/)
 
 Portfolio is a web application built on __Angular__, __Node.js__, and __express__ that provides NBA-related reports such as:
 - Players personal information e.g. height, weight, position,...
