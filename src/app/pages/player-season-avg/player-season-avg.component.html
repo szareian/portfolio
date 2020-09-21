@@ -11,14 +11,11 @@
 
             <mat-card-title>{{ currPlayer.first_name + ' ' + currPlayer.last_name}}</mat-card-title>
             <mat-card-subtitle>{{ currPlayer.position }}</mat-card-subtitle>
-            
+
         </mat-card-header>
-<mat-card-content>
+        <mat-card-content>
             <div class=" col-md-12 active-cyan active-cyan-2 mb-3">
                 <div class=" card">
-                    <div class=" card-header">
-                        <h4 class="card-title">{{ currPlayer.first_name + ' ' + currPlayer.last_name }} Stats</h4>
-                    </div>
                     <div class=" card-body">
                         <div>
                             <table class=" table table-hover">
@@ -57,13 +54,15 @@
                             </table>
 
                             <div class="container-fluid">
-                            
+
                                 <div class="row no-gutters" [formGroup]="seasonAvgForm">
-                            
+
                                     <div class="col-2">
-                                        <input class="form-control" id="season" placeholder="Season" formControlName="season"
-                                    ngbPopover="Add {{ currPlayer.first_name }} {{ currPlayer.last_name }}'s seasonal average to the table below" triggers="mouseenter:mouseleave">
-                            
+                                        <input class="form-control" id="season" placeholder="Season"
+                                            formControlName="season"
+                                            ngbPopover="Add {{ currPlayer.first_name }} {{ currPlayer.last_name }}'s seasonal average to the table below"
+                                            triggers="mouseenter:mouseleave">
+
                                     </div>
                                     <div class="col-1">
                                         <button type="submit" class="btn-info form-control" [formGroup]="seasonAvgForm"
@@ -130,9 +129,9 @@
                     </div>
                 </div>
             </div>
-</mat-card-content>
-<mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close color='warn'>Close</button>
-</mat-dialog-actions>
+        </mat-card-content>
+        <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close color='warn'>Close</button>
+        </mat-dialog-actions>
     </mat-dialog-content>
 </mat-card>
